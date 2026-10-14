@@ -1,0 +1,32 @@
+[
+  {
+    "label_id": 0,
+    "class_name": "Apple___healthy",
+    "display_name": "Táo (Apple)"
+  },
+  {
+    "label_id": 1,
+    "class_name": "Blueberry___healthy",
+    "display_name": "Việt quất (Blueberry)"
+  },
+  {
+    "label_id": 2,
+    "class_name": "Corn_(maize)___healthy",
+    "display_name": "Bắp / Ngô (Corn)"
+  },
+  {
+    "label_id": 3,
+    "class_name": "Grape___healthy",
+    "display_name": "Nho (Grape)"
+  },
+  {
+    "label_id": 4,
+    "class_name": "Pepper,_bell___healthy",
+    "display_name": "Ớt chuông (Pepper bell)"
+  },
+  {
+    "label_id": 5,
+    "class_name": "Tomato___healthy",
+    "display_name": "Cà chua (Tomato)"
+  }
+]

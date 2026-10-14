@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and virtual environments
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# Raw dataset (1.3GB+) — only subset in data/ is deployed
+dataset/
+data/.cache/
+
+# IDE / OS metadata
+.DS_Store
+Thumbs.db
+*.log

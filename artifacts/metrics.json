@@ -1,0 +1,810 @@
+{
+  "shape_color_knn": {
+    "model_id": "shape_color_knn",
+    "feature_type": "shape_color",
+    "algo_name": "knn",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.9136,
+    "precision_macro": 0.9146,
+    "recall_macro": 0.9136,
+    "f1_macro": 0.9123,
+    "infer_ms_per_image": 0.07,
+    "model_size_mb": 0.3,
+    "confusion_matrix": [
+      [
+        48,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        51,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        54,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        50,
+        4,
+        0
+      ],
+      [
+        2,
+        2,
+        0,
+        9,
+        40,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        53
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 0.9230769230769231,
+        "recall": 0.8888888888888888,
+        "f1": 0.9056603773584906,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.864406779661017,
+        "recall": 0.9444444444444444,
+        "f1": 0.9026548672566371,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.847457627118644,
+        "recall": 0.9259259259259259,
+        "f1": 0.8849557522123894,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.8888888888888888,
+        "recall": 0.7407407407407407,
+        "f1": 0.8080808080808081,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 0.9636363636363636,
+        "recall": 0.9814814814814815,
+        "f1": 0.9724770642201835,
+        "support": 54
+      }
+    }
+  },
+  "shape_color_svm_linear": {
+    "model_id": "shape_color_svm_linear",
+    "feature_type": "shape_color",
+    "algo_name": "svm_linear",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.9352,
+    "precision_macro": 0.9357,
+    "recall_macro": 0.9352,
+    "f1_macro": 0.9352,
+    "infer_ms_per_image": 0.01,
+    "model_size_mb": 0.15,
+    "confusion_matrix": [
+      [
+        49,
+        4,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        52,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        54,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        49,
+        5,
+        0
+      ],
+      [
+        2,
+        2,
+        0,
+        3,
+        47,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        52
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 0.9074074074074074,
+        "recall": 0.9074074074074074,
+        "f1": 0.9074074074074074,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.896551724137931,
+        "recall": 0.9629629629629629,
+        "f1": 0.9285714285714286,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.9423076923076923,
+        "recall": 0.9074074074074074,
+        "f1": 0.9245283018867925,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.8867924528301887,
+        "recall": 0.8703703703703703,
+        "f1": 0.8785046728971962,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 0.9811320754716981,
+        "recall": 0.9629629629629629,
+        "f1": 0.9719626168224299,
+        "support": 54
+      }
+    }
+  },
+  "shape_color_svm_rbf": {
+    "model_id": "shape_color_svm_rbf",
+    "feature_type": "shape_color",
+    "algo_name": "svm_rbf",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.9444,
+    "precision_macro": 0.9444,
+    "recall_macro": 0.9444,
+    "f1_macro": 0.9444,
+    "infer_ms_per_image": 0.04,
+    "model_size_mb": 0.33,
+    "confusion_matrix": [
+      [
+        49,
+        4,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        2,
+        52,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        54,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        49,
+        5,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        4,
+        49,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        53
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 0.9245283018867925,
+        "recall": 0.9074074074074074,
+        "f1": 0.9158878504672897,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.9285714285714286,
+        "recall": 0.9629629629629629,
+        "f1": 0.9454545454545454,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.9245283018867925,
+        "recall": 0.9074074074074074,
+        "f1": 0.9158878504672897,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.9074074074074074,
+        "recall": 0.9074074074074074,
+        "f1": 0.9074074074074074,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 0.9814814814814815,
+        "recall": 0.9814814814814815,
+        "f1": 0.9814814814814815,
+        "support": 54
+      }
+    }
+  },
+  "shape_color_rf": {
+    "model_id": "shape_color_rf",
+    "feature_type": "shape_color",
+    "algo_name": "rf",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.963,
+    "precision_macro": 0.964,
+    "recall_macro": 0.963,
+    "f1_macro": 0.9631,
+    "infer_ms_per_image": 0.13,
+    "model_size_mb": 2.73,
+    "confusion_matrix": [
+      [
+        50,
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        54,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        54,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        51,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        4,
+        50,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        53
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 1.0,
+        "recall": 0.9259259259259259,
+        "f1": 0.9615384615384616,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.9642857142857143,
+        "recall": 1.0,
+        "f1": 0.9818181818181818,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.9107142857142857,
+        "recall": 0.9444444444444444,
+        "f1": 0.9272727272727272,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.9090909090909091,
+        "recall": 0.9259259259259259,
+        "f1": 0.9174311926605505,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 1.0,
+        "recall": 0.9814814814814815,
+        "f1": 0.9906542056074766,
+        "support": 54
+      }
+    }
+  },
+  "hog_knn": {
+    "model_id": "hog_knn",
+    "feature_type": "hog",
+    "algo_name": "knn",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.7222,
+    "precision_macro": 0.781,
+    "recall_macro": 0.7222,
+    "f1_macro": 0.721,
+    "infer_ms_per_image": 3.14,
+    "model_size_mb": 19.76,
+    "confusion_matrix": [
+      [
+        31,
+        6,
+        0,
+        3,
+        0,
+        14
+      ],
+      [
+        9,
+        19,
+        0,
+        0,
+        1,
+        25
+      ],
+      [
+        0,
+        1,
+        50,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        0,
+        47,
+        0,
+        7
+      ],
+      [
+        4,
+        4,
+        0,
+        2,
+        33,
+        11
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        54
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 0.7045454545454546,
+        "recall": 0.5740740740740741,
+        "f1": 0.6326530612244898,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.6333333333333333,
+        "recall": 0.35185185185185186,
+        "f1": 0.4523809523809524,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 1.0,
+        "recall": 0.9259259259259259,
+        "f1": 0.9615384615384616,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.9038461538461539,
+        "recall": 0.8703703703703703,
+        "f1": 0.8867924528301887,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.9705882352941176,
+        "recall": 0.6111111111111112,
+        "f1": 0.75,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 0.47368421052631576,
+        "recall": 1.0,
+        "f1": 0.6428571428571429,
+        "support": 54
+      }
+    }
+  },
+  "hog_svm_linear": {
+    "model_id": "hog_svm_linear",
+    "feature_type": "hog",
+    "algo_name": "svm_linear",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.8827,
+    "precision_macro": 0.8845,
+    "recall_macro": 0.8827,
+    "f1_macro": 0.8833,
+    "infer_ms_per_image": 0.38,
+    "model_size_mb": 11.81,
+    "confusion_matrix": [
+      [
+        42,
+        8,
+        0,
+        1,
+        2,
+        1
+      ],
+      [
+        10,
+        40,
+        0,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        1,
+        52,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        52,
+        0,
+        0
+      ],
+      [
+        3,
+        2,
+        0,
+        0,
+        48,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        0,
+        52
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 0.75,
+        "recall": 0.7777777777777778,
+        "f1": 0.7636363636363637,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.7407407407407407,
+        "recall": 0.7407407407407407,
+        "f1": 0.7407407407407407,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 1.0,
+        "recall": 0.9629629629629629,
+        "f1": 0.9811320754716981,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.9811320754716981,
+        "recall": 0.9629629629629629,
+        "f1": 0.9719626168224299,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.9230769230769231,
+        "recall": 0.8888888888888888,
+        "f1": 0.9056603773584906,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 0.9122807017543859,
+        "recall": 0.9629629629629629,
+        "f1": 0.9369369369369369,
+        "support": 54
+      }
+    }
+  },
+  "hog_svm_rbf": {
+    "model_id": "hog_svm_rbf",
+    "feature_type": "hog",
+    "algo_name": "svm_rbf",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.8827,
+    "precision_macro": 0.8826,
+    "recall_macro": 0.8827,
+    "f1_macro": 0.8823,
+    "infer_ms_per_image": 0.74,
+    "model_size_mb": 15.71,
+    "confusion_matrix": [
+      [
+        41,
+        10,
+        0,
+        0,
+        1,
+        2
+      ],
+      [
+        9,
+        39,
+        0,
+        1,
+        3,
+        2
+      ],
+      [
+        0,
+        0,
+        54,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        53,
+        0,
+        1
+      ],
+      [
+        3,
+        3,
+        0,
+        0,
+        47,
+        1
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        0,
+        52
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 0.7735849056603774,
+        "recall": 0.7592592592592593,
+        "f1": 0.7663551401869159,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.7222222222222222,
+        "recall": 0.7222222222222222,
+        "f1": 0.7222222222222222,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.9814814814814815,
+        "recall": 0.9814814814814815,
+        "f1": 0.9814814814814815,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.9215686274509803,
+        "recall": 0.8703703703703703,
+        "f1": 0.8952380952380953,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 0.896551724137931,
+        "recall": 0.9629629629629629,
+        "f1": 0.9285714285714286,
+        "support": 54
+      }
+    }
+  },
+  "hog_rf": {
+    "model_id": "hog_rf",
+    "feature_type": "hog",
+    "algo_name": "rf",
+    "split": "test",
+    "n_test": 324,
+    "accuracy": 0.821,
+    "precision_macro": 0.8159,
+    "recall_macro": 0.821,
+    "f1_macro": 0.8162,
+    "infer_ms_per_image": 0.16,
+    "model_size_mb": 4.55,
+    "confusion_matrix": [
+      [
+        31,
+        12,
+        0,
+        4,
+        4,
+        3
+      ],
+      [
+        10,
+        35,
+        2,
+        0,
+        3,
+        4
+      ],
+      [
+        0,
+        2,
+        51,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        54,
+        0,
+        0
+      ],
+      [
+        4,
+        5,
+        1,
+        2,
+        42,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        53
+      ]
+    ],
+    "per_class": {
+      "Apple___healthy": {
+        "precision": 0.6888888888888889,
+        "recall": 0.5740740740740741,
+        "f1": 0.6262626262626263,
+        "support": 54
+      },
+      "Blueberry___healthy": {
+        "precision": 0.6363636363636364,
+        "recall": 0.6481481481481481,
+        "f1": 0.6422018348623854,
+        "support": 54
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 0.9444444444444444,
+        "recall": 0.9444444444444444,
+        "f1": 0.9444444444444444,
+        "support": 54
+      },
+      "Grape___healthy": {
+        "precision": 0.8852459016393442,
+        "recall": 1.0,
+        "f1": 0.9391304347826087,
+        "support": 54
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.8571428571428571,
+        "recall": 0.7777777777777778,
+        "f1": 0.8155339805825242,
+        "support": 54
+      },
+      "Tomato___healthy": {
+        "precision": 0.8833333333333333,
+        "recall": 0.9814814814814815,
+        "f1": 0.9298245614035088,
+        "support": 54
+      }
+    }
+  }
+}
