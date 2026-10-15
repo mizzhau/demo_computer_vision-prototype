@@ -142,16 +142,96 @@ def render():
             return f
 
         if method == "Histogram gốc":
-            fig_orig = make_hist_figure(img, "Lược đồ tần suất Histogram — Ảnh gốc")
+            fig_orig = make_hist_figure(img, "Lược đồ tần suất Histogram đa kênh (RGB & Mức xám)")
             st.plotly_chart(fig_orig, use_container_width=True)
         else:
             col_h_fig1, col_h_fig2 = st.columns(2)
             with col_h_fig1:
-                fig_before = make_hist_figure(img, "1. Lược đồ Histogram — Ảnh gốc (Trước xử lý)")
+                fig_before = make_hist_figure(img, "1. Lược đồ Histogram đa kênh — Ảnh gốc")
                 st.plotly_chart(fig_before, use_container_width=True)
             with col_h_fig2:
-                fig_after = make_hist_figure(proc_img, f"2. Lược đồ Histogram — Sau xử lý ({method})")
+                fig_after = make_hist_figure(proc_img, f"2. Lược đồ Histogram đa kênh — Sau {method}")
                 st.plotly_chart(fig_after, use_container_width=True)
+
+        st.divider()
+        st.markdown("#### Lược đồ Histogram chuyên biệt thang mức xám (Grayscale Histogram)")
+        st.caption("Quan sát sự phân bổ và kéo dãn các mức xám (0 - 255) trước và sau khi áp dụng thuật toán cân bằng.")
+
+        gray_before = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+        gray_after = cv2.cvtColor(proc_img, cv2.COLOR_RGB2GRAY)
+
+        def make_gray_bar_chart(gray_mat: np.ndarray, title_text: str, bar_color: str) -> go.Figure:
+            h = cv2.calcHist([gray_mat], [0], None, [256], [0, 256]).flatten()
+            f = go.Figure(go.Bar(
+                x=list(range(256)),
+                y=h,
+                marker=dict(color=bar_color),
+                name="Pixel count"
+            ))
+            f.update_layout(
+                title=dict(text=title_text, font=dict(size=13)),
+                xaxis=dict(title="Thang mức xám (0: Đen ➔ 255: Trắng)", range=[-1, 256], dtick=32),
+                yaxis_title="Số lượng pixel",
+                margin=dict(t=40, b=30, l=40, r=20),
+                height=280
+            )
+            return f
+
+        if method == "Histogram gốc":
+            fig_gray = make_gray_bar_chart(gray_before, "Phân bố thang mức xám — Ảnh gốc (Dạng cột Bar)", "#475569")
+            st.plotly_chart(fig_gray, use_container_width=True)
+            c_s1, c_s2, c_s3 = st.columns(3)
+            c_s1.metric("Độ sáng trung bình (Mean)", f"{gray_before.mean():.1f} / 255")
+            c_s2.metric("Độ tương phản (Std Dev)", f"{gray_before.std():.1f}")
+            c_s3.metric("Dải giá trị động (Dynamic Range)", f"[{gray_before.min()}, {gray_before.max()}]")
+        else:
+            col_gb1, col_gb2 = st.columns(2)
+            with col_gb1:
+                fig_gb = make_gray_bar_chart(gray_before, "Thang mức xám ảnh gốc (Trước cân bằng)", "#64748B")
+                st.plotly_chart(fig_gb, use_container_width=True)
+                s1, s2 = st.columns(2)
+                s1.write(f"- **Độ sáng TB:** `{gray_before.mean():.1f}`")
+                s1.write(f"- **Độ tương phản:** `{gray_before.std():.1f}`")
+                s2.write(f"- **Dải pixel:** `[{gray_before.min()}, {gray_before.max()}]`")
+            with col_gb2:
+                fig_ga = make_gray_bar_chart(gray_after, f"Thang mức xám sau khi {method}", "#16A34A")
+                st.plotly_chart(fig_ga, use_container_width=True)
+                s1, s2 = st.columns(2)
+                s1.write(f"- **Độ sáng TB:** `{gray_after.mean():.1f}`")
+                s1.write(f"- **Độ tương phản:** `{gray_after.std():.1f}`")
+                s2.write(f"- **Dải pixel:** `[{gray_after.min()}, {gray_after.max()}]`")
+
+            # Overlay comparison chart
+            h_b = cv2.calcHist([gray_before], [0], None, [256], [0, 256]).flatten()
+            h_a = cv2.calcHist([gray_after], [0], None, [256], [0, 256]).flatten()
+            fig_overlay = go.Figure()
+            fig_overlay.add_trace(go.Scatter(
+                x=list(range(256)),
+                y=h_b,
+                mode="lines",
+                name="Thang mức xám gốc (Trước)",
+                line=dict(color="#64748B", width=2),
+                fill="tozeroy",
+                fillcolor="rgba(100, 116, 139, 0.25)"
+            ))
+            fig_overlay.add_trace(go.Scatter(
+                x=list(range(256)),
+                y=h_a,
+                mode="lines",
+                name=f"Thang mức xám sau ({method})",
+                line=dict(color="#16A34A", width=2),
+                fill="tozeroy",
+                fillcolor="rgba(22, 163, 74, 0.3)"
+            ))
+            fig_overlay.update_layout(
+                title=dict(text=f"Đồ thị đối chiếu trực tiếp phân phối thang mức xám: Gốc vs {method}", font=dict(size=14)),
+                xaxis=dict(title="Thang mức xám (0: Đen ➔ 255: Trắng)", range=[0, 255], dtick=32),
+                yaxis_title="Số lượng pixel",
+                margin=dict(t=45, b=30, l=40, r=20),
+                height=320,
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+            )
+            st.plotly_chart(fig_overlay, use_container_width=True)
 
     with tab_pixel:
         h, w = img.shape[:2]
