@@ -29,14 +29,6 @@ def render():
         df = pd.read_csv(MANIFEST_PATH)
         st.session_state["manifest_df"] = df
 
-    cur_img = st.session_state.get("input_image")
-    cur_meta = st.session_state.get("input_meta")
-    if cur_img is None:
-        st.info("ℹ️ **Bước 1:** Vui lòng chọn một ảnh mẫu từ thư viện bên dưới hoặc sang tab **Tải ảnh** để bắt đầu áp dụng các kỹ thuật xử lý.")
-    else:
-        file_name = cur_meta.get("file_name", "Ảnh đang chọn") if cur_meta else "Ảnh đang chọn"
-        st.success(f"✅ Đang sử dụng ảnh: **{file_name}** ({cur_img.shape[1]}x{cur_img.shape[0]} px). Bạn có thể chọn ảnh khác bên dưới hoặc tải ảnh mới.")
-
     tab_sample, tab_upload, tab_stats = st.tabs([
         "Chọn ảnh mẫu", "Tải ảnh", "Thống kê"
     ])
