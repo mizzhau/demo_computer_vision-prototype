@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
+import cv2
+
 
 from core.imgproc.color import (
     convert_color_space,
