@@ -122,14 +122,36 @@ def render():
         with col_h_view:
             image_compare_view(img, proc_img, "Ảnh trước", "Ảnh sau xử lý")
 
-        hists = compute_histogram(proc_img)
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(y=hists["r"], mode="lines", name="Kênh Đỏ (R)", line=dict(color="#E53935")))
-        fig.add_trace(go.Scatter(y=hists["g"], mode="lines", name="Kênh Lục (G)", line=dict(color="#43A047")))
-        fig.add_trace(go.Scatter(y=hists["b"], mode="lines", name="Kênh Lam (B)", line=dict(color="#1E88E5")))
-        fig.add_trace(go.Scatter(y=hists["gray"], mode="lines", name="Mức xám", line=dict(color="#757575", dash="dash")))
-        fig.update_layout(title="Lược đồ tần suất Histogram", xaxis_title="Cường độ pixel (0-255)", yaxis_title="Số lượng", margin=dict(t=40, b=40))
-        st.plotly_chart(fig, use_container_width=True)
+        st.divider()
+
+        def make_hist_figure(target_img: np.ndarray, chart_title: str) -> go.Figure:
+            hists = compute_histogram(target_img)
+            f = go.Figure()
+            f.add_trace(go.Scatter(y=hists["r"], mode="lines", name="Kênh Đỏ (R)", line=dict(color="#E53935", width=1.5)))
+            f.add_trace(go.Scatter(y=hists["g"], mode="lines", name="Kênh Lục (G)", line=dict(color="#43A047", width=1.5)))
+            f.add_trace(go.Scatter(y=hists["b"], mode="lines", name="Kênh Lam (B)", line=dict(color="#1E88E5", width=1.5)))
+            f.add_trace(go.Scatter(y=hists["gray"], mode="lines", name="Mức xám", line=dict(color="#757575", dash="dash", width=1.5)))
+            f.update_layout(
+                title=dict(text=chart_title, font=dict(size=14)),
+                xaxis_title="Cường độ pixel (0-255)",
+                yaxis_title="Số lượng pixel",
+                margin=dict(t=45, b=30, l=40, r=20),
+                height=320,
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+            )
+            return f
+
+        if method == "Histogram gốc":
+            fig_orig = make_hist_figure(img, "Lược đồ tần suất Histogram — Ảnh gốc")
+            st.plotly_chart(fig_orig, use_container_width=True)
+        else:
+            col_h_fig1, col_h_fig2 = st.columns(2)
+            with col_h_fig1:
+                fig_before = make_hist_figure(img, "1. Lược đồ Histogram — Ảnh gốc (Trước xử lý)")
+                st.plotly_chart(fig_before, use_container_width=True)
+            with col_h_fig2:
+                fig_after = make_hist_figure(proc_img, f"2. Lược đồ Histogram — Sau xử lý ({method})")
+                st.plotly_chart(fig_after, use_container_width=True)
 
     with tab_pixel:
         h, w = img.shape[:2]
