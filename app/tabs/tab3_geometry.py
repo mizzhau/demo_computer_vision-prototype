@@ -24,7 +24,7 @@ def render():
     h, w = img.shape[:2]
 
     tab_basic, tab_affine, tab_persp, tab_aug = st.tabs([
-        "Co giãn, Cắt & Lật", "Biến đổi Afin (Affine)", "Biến đổi Phối cảnh (Perspective)", "Tăng cường (Augmentation)"
+        "Co giãn, cắt & lật", "Biến đổi afin (Affine)", "Biến đổi phối cảnh (Perspective)", "Tăng cường (Augmentation)"
     ])
 
     with tab_basic:
@@ -86,10 +86,10 @@ def render():
             ty = st.slider("Tịnh tiến trục Y (ty px):", -100.0, 100.0, 0.0, step=5.0, label_visibility="collapsed")
 
             transformed, rot_mat = affine_transform(img, angle, scale, tx, ty)
-            display_matrix(rot_mat, "Ma trận biến đổi Afin 2x3")
+            display_matrix(rot_mat, "Ma trận biến đổi afin 2x3")
 
         with col_a_view:
-            image_compare_view(img, transformed, "Ảnh gốc", f"Biến đổi Afin ({angle}°)")
+            image_compare_view(img, transformed, "Ảnh gốc", f"Biến đổi afin ({angle}°)")
 
     with tab_persp:
         col_p_ctrl, col_p_view = st.columns([1, 2])

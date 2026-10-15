@@ -24,7 +24,7 @@ def render():
         return
 
     tab_colorspace, tab_adj, tab_hist, tab_pixel = st.tabs([
-        "Không gian màu", "Độ sáng & Tương phản", "Histogram", "Tra cứu pixel"
+        "Không gian màu", "Độ sáng & tương phản", "Histogram", "Tra cứu pixel"
     ])
 
     with tab_colorspace:
