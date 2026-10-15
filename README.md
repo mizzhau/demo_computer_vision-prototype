@@ -2,9 +2,8 @@
 sdk: streamlit
 sdk_version: 1.41.0
 app_file: streamlit_app.py
-pinned: false
 ---
-## 1. Nguồn dữ liệu (Dataset Source)
+## Dataset Source
 * **Kho lưu trữ chính thức:** [PlantVillage-Dataset (GitHub)](https://github.com/spMohanty/PlantVillage-Dataset.git)
 * **Tác giả:** Sharada P. Mohanty, David P. Hughes, Marcel Salathé
 * **Giấy phép:** Creative Commons Zero (CC0)
