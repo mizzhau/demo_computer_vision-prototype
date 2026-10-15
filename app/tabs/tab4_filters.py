@@ -13,6 +13,7 @@ from core.imgproc.filters import (
     compute_psnr
 )
 from app.components.compare import image_compare_view
+from app.state import require_active_image
 
 
 def render():
@@ -20,7 +21,7 @@ def render():
 
     clean_img = st.session_state.get("input_image")
     if clean_img is None:
-        st.warning("Vui lòng chọn hoặc tải ảnh tại phần dataset.")
+        require_active_image()
         return
 
     col_ctrl, col_main = st.columns([1, 2])

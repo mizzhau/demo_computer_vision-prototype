@@ -7,6 +7,7 @@ from PIL import Image
 from config import BASE_DIR
 from core.imgproc.segment import apply_threshold, apply_morphology, extract_foreground_leaf
 from core.evaluation.metrics import compute_iou_dice
+from app.state import require_active_image
 
 
 def render():
@@ -15,7 +16,7 @@ def render():
     img = st.session_state.get("input_image")
     meta = st.session_state.get("input_meta", {})
     if img is None:
-        st.warning("Vui lòng chọn hoặc tải ảnh tại phần dataset.")
+        require_active_image()
         return
 
     col_ctrl, col_main = st.columns([1, 2])

@@ -11,6 +11,7 @@ from core.imgproc.geometry import (
 )
 from app.components.compare import image_compare_view
 from app.components.matrix import display_matrix
+from app.state import require_active_image
 
 
 def render():
@@ -18,7 +19,7 @@ def render():
 
     img = st.session_state.get("input_image")
     if img is None:
-        st.warning("Vui lòng chọn hoặc tải ảnh tại phần dataset.")
+        require_active_image()
         return
 
     h, w = img.shape[:2]

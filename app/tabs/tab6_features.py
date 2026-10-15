@@ -8,6 +8,7 @@ from core.imgproc.segment import apply_threshold, apply_morphology, extract_fore
 from core.features.shape import extract_largest_contour, compute_shape_features, draw_geometric_overlays
 from core.features.color_hist import compute_color_features
 from core.features.hog_feat import compute_hog_features
+from app.state import require_active_image
 
 
 def render():
@@ -15,7 +16,7 @@ def render():
 
     img = st.session_state.get("input_image")
     if img is None:
-        st.warning("Vui lòng chọn hoặc tải ảnh tại phần dataset.")
+        require_active_image()
         return
 
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)

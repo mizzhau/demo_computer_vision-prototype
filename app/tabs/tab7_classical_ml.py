@@ -13,6 +13,7 @@ from core.imgproc.segment import apply_threshold, apply_morphology, extract_fore
 from core.features.shape import extract_largest_contour, draw_geometric_overlays
 from core.features.hog_feat import compute_hog_features
 from app.components.metrics_view import plot_confusion_matrix, display_classification_summary
+from app.state import require_active_image
 
 
 def show_preprocessing_pipeline(img_rgb: np.ndarray, feature_type: str):
@@ -173,7 +174,9 @@ def render():
                 key="p_algo",
                 label_visibility="collapsed"
             )
-            btn_run = st.button("Chạy dự đoán", type="primary", disabled=(active_pred_img is None))
+            btn_run = st.button("Chạy dự đoán", type="primary")
+            if btn_run and active_pred_img is None:
+                require_active_image()
 
         with col_p_res:
             st.markdown("**3. Kết quả phân loại:**")

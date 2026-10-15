@@ -13,6 +13,7 @@ from core.models.dl_stubs import (
     extract_cnn_feature_maps,
     predict_cnn
 )
+from app.state import require_active_image
 
 
 @st.cache_data
@@ -60,7 +61,7 @@ def render():
     img = st.session_state.get("input_image")
     meta = st.session_state.get("input_meta", {})
     if img is None:
-        st.warning("Vui lòng chọn hoặc tải ảnh tại phần dataset.")
+        require_active_image()
         return
 
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)

@@ -13,6 +13,7 @@ from core.imgproc.color import (
     extract_pixel_neighborhood
 )
 from app.components.compare import image_compare_view
+from app.state import require_active_image
 
 
 def render():
@@ -20,7 +21,7 @@ def render():
 
     img = st.session_state.get("input_image")
     if img is None:
-        st.warning("Vui lòng chọn hoặc tải ảnh tại phần dataset.")
+        require_active_image()
         return
 
     tab_colorspace, tab_adj, tab_hist, tab_pixel = st.tabs([

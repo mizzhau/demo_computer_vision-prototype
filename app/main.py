@@ -7,7 +7,7 @@ from PIL import Image
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from config import CLASS_DISPLAY_NAMES
-from app.state import init_session_state, reset_active_image
+from app.state import init_session_state, reset_active_image, require_active_image
 from app.tabs import (
     tab1_dataset,
     tab2_imgproc,
@@ -104,36 +104,44 @@ with st.sidebar:
     st.divider()
 
     img = st.session_state.get("input_image")
-    meta = st.session_state.get("input_meta", {})
+    meta = st.session_state.get("input_meta")
 
     if img is not None:
-        st.markdown("**Ảnh hiện tại:**")
+        st.markdown("**Ảnh đang sử dụng:**")
         st.image(img, width=200)
-        lbl_display = CLASS_DISPLAY_NAMES.get(meta.get("label"), meta.get("label", "N/A"))
+        lbl_display = "Ảnh người dùng tải lên"
+        if meta and meta.get("label") and meta.get("label") != "user_upload":
+            lbl_display = CLASS_DISPLAY_NAMES.get(meta.get("label"), meta.get("label", "N/A"))
         st.caption(f"{lbl_display} ({img.shape[1]}x{img.shape[0]} px)")
 
-        if st.button("Đặt lại ảnh gốc", key="btn_reset_sidebar", use_container_width=True):
+        if st.button("Đặt lại ảnh gốc", key="btn_reset_sidebar", use_container_width=True, help="Xóa ảnh hiện tại và chọn lại ảnh khác"):
             reset_active_image()
-            st.success("Đã khôi phục ảnh ban đầu.")
+            st.toast("Đã xóa ảnh hiện tại. Vui lòng chọn hoặc tải ảnh mới.", icon="🔄")
+            st.rerun()
+    else:
+        st.markdown("**Ảnh hiện tại:** *(Chưa có)*")
+        st.caption("Chưa có ảnh nào được chọn.")
+        if st.button("Chọn / Tải ảnh lên", key="btn_sidebar_choose", type="primary", use_container_width=True):
+            st.session_state["current_nav"] = "dataset"
             st.rerun()
 
 cur_tab = st.session_state["current_nav"]
 
+PROCESSING_TABS = {
+    "imgproc": tab2_imgproc,
+    "geometry": tab3_geometry,
+    "filters": tab4_filters,
+    "segmentation": tab5_segmentation,
+    "features": tab6_features,
+    "deep_learning": tab8_deep_learning,
+}
+
 if cur_tab == "dataset":
     tab1_dataset.render()
-elif cur_tab == "imgproc":
-    tab2_imgproc.render()
-elif cur_tab == "geometry":
-    tab3_geometry.render()
-elif cur_tab == "filters":
-    tab4_filters.render()
-elif cur_tab == "segmentation":
-    tab5_segmentation.render()
-elif cur_tab == "features":
-    tab6_features.render()
+elif cur_tab in PROCESSING_TABS:
+    if require_active_image():
+        PROCESSING_TABS[cur_tab].render()
 elif cur_tab == "classical_ml":
     tab7_classical_ml.render()
-elif cur_tab == "deep_learning":
-    tab8_deep_learning.render()
 elif cur_tab == "modern_cv":
     tab9_modern_cv.render()
